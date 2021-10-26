@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipamento;
 use Illuminate\Http\Request;
 
 class EquipamentosController extends Controller
@@ -13,7 +14,8 @@ class EquipamentosController extends Controller
      */
     public function index()
     {
-        //
+        $equipamentos = Equipamento::all();
+        return view('equipamentos.index', compact('equipamentos'));
     }
 
     /**
