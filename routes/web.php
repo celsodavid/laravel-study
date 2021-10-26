@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipamentosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/equipamento', 'EquipamentosController');
+Route::resource('/equipamento', EquipamentosController::class)->except([
+    'show', 'edit'
+]);
