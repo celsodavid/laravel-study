@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipamentosController;
+use App\Models\Equipamento;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,7 @@ Route::get('/', function () {
 Route::resource('/equipamento', EquipamentosController::class)->except([
     'show', 'edit'
 ]);
+
+Route::get('/equipamento/delete/{equipamento}', function (Equipamento $equipamento) {
+    return view('equipamentos.destroy', ['eqp' => $equipamento]);
+})->name('equipamento.delete');

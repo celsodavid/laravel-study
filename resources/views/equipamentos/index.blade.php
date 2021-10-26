@@ -13,13 +13,13 @@
         <div class="row">
             <table class="table table-striped">
                 <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Tipo</th>
-                    <th>Modelo</th>
-                    <th>Fabricante</th>
-                    <th>Ações</th>
-                </tr>
+                    <tr>
+                        <th>Id</th>
+                        <th>Tipo</th>
+                        <th>Modelo</th>
+                        <th>Fabricante</th>
+                        <th>Ações</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach($equipamentos as $equipamento)
@@ -34,7 +34,7 @@
                                     <a href="">Editar</a>
                                 </li>
                                 <li>
-                                    <a href="">Deletar</a>
+                                    <a href="{{ route('equipamento.delete', ['equipamento' => $equipamento]) }}">Deletar</a>
                                 </li>
                             </ul>
                         </td>

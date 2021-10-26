@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Session;
 
 class EquipamentosController extends Controller
 {
@@ -90,11 +91,19 @@ class EquipamentosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  Equipamento  $equipamento
+     * @param  Request  $request
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Equipamento $equipamento, Request $request): RedirectResponse
     {
-        //
+        if (!$request->has('cancel') ){
+            $equipamento->delete();
+            Session::flash('message', 'Equipamento excluído com sucesso !');
+        } else {
+            $request->session()->flash('message', 'Operação cancelada pelo usuário');
+        }
+
+        return redirect()->route('equipamento.index');
     }
 }
