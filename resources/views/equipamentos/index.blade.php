@@ -7,7 +7,7 @@
                 <h3>Listagem de Equipamentos</h3>
             </div>
             <div class="col-md-8">
-                <a href="" class="btn btn-primary">Incluir Equipamento</a>
+                <a href="{{ route('equipamento.create') }}" class="btn btn-primary">Incluir Equipamento</a>
             </div>
         </div>
         <div class="row">
