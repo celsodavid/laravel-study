@@ -26,3 +26,7 @@ Route::resource('/equipamento', EquipamentosController::class)->except([
 Route::get('/equipamento/delete/{equipamento}', function (Equipamento $equipamento) {
     return view('equipamentos.destroy', ['eqp' => $equipamento]);
 })->name('equipamento.delete');
+
+Route::get('/equipamento/edit/{equipamento}', function (Equipamento $equipamento) {
+    return view('equipamentos.edit', ['eqp' => $equipamento]);
+})->name('equipamento.edit');

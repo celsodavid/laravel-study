@@ -79,13 +79,24 @@ class EquipamentosController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @param  Equipamento  $equipamento
      * @param  Request  $request
-     * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Equipamento $equipamento, Request $request): RedirectResponse
     {
-        //
+        if (! $request->has('cancel') ){
+            $equipamento->tipo = $request->input('tipo');
+            $equipamento->modelo = $request->input('modelo');
+            $equipamento->fabricante = $request->input('fabricante');
+            $equipamento->update();
+
+            Session::flash('message', 'Equipamento atualizado com sucesso !');
+        } else {
+            $request->session()->flash('message', 'Operação cancelada pelo usuário');
+        }
+
+        return redirect()->route('equipamento.index');
     }
 
     /**
