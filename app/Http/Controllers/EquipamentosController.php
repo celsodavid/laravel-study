@@ -42,10 +42,10 @@ class EquipamentosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  EquipamentoFormRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(EquipamentoFormRequest $request): RedirectResponse
     {
         if (!$request->has('cancel') ) {
             $dados = $request->all();
