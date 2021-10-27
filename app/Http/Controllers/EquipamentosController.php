@@ -89,7 +89,7 @@ class EquipamentosController extends Controller
      */
     public function update(Equipamento $equipamento, Request $request): RedirectResponse
     {
-        if (! $request->has('cancel') ){
+        if (!$request->has('cancel')) {
             $equipamento->tipo = $request->input('tipo');
             $equipamento->modelo = $request->input('modelo');
             $equipamento->fabricante = $request->input('fabricante');
@@ -100,7 +100,7 @@ class EquipamentosController extends Controller
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
         }
 
-        return redirect()->route('equipamento.index');
+        return redirect()->to(session()->pull('redirect_to'));
     }
 
     /**
@@ -119,6 +119,6 @@ class EquipamentosController extends Controller
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
         }
 
-        return redirect()->route('equipamento.index');
+        return redirect()->to(session()->pull('redirect_to'));
     }
 }
