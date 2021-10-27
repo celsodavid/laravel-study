@@ -20,7 +20,7 @@ class EquipamentosController extends Controller
      */
     public function index()
     {
-        $equipamentos = Equipamento::all();
+        $equipamentos = Equipamento::paginate(10);;
         return view('equipamentos.index', compact('equipamentos'));
     }
 
