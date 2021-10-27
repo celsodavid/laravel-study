@@ -14,4 +14,7 @@ class Equipamento extends Model
         'modelo',
         'fabricante'
     ];
+
+    // Mass assignment x fillable
+    protected $guarded = ['isAdmin', 'roles'];
 }
